@@ -5,20 +5,21 @@ import plus from "../img/plus.png";
 // import React from "@types/react";
 import check from "../img/check.png";
 
-const Card = (props)=>{
+const Card = ({name, imgUrl, price, onPlus})=>{
 const [isAdded, setIsAdded] = useState(false);
 const onClickPlus = () =>{
+    onPlus({name, imgUrl, price})
     setIsAdded(!isAdded);
 }
 // console.log(isAdded);
 return (
 <div className='card'>
-    <img width={133} height={112} src={props.imgUrl} alt=""/>
-    <h5>{props.title}</h5>
+    <img width={133} height={112} src={imgUrl} alt=""/>
+    <h5>{name}</h5>
     <div className='d-flex justify-between align-center'>
         <div className='d-flex flex-column '>
             <span>Price:</span>
-            <b className='opacity-5'>{props.price} zl</b>
+            <b className='opacity-5'>{price} zl</b>
 
         </div>
         {/*<button className='button'>*/}
