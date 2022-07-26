@@ -74,6 +74,15 @@ img{
   border: 1px solid #afadad;
   border-radius: 10px;
   padding: 0 15px;
+  position: relative;
+  .clear{
+    position: absolute;
+    right: 0;
+    width: 18px;
+    height: 18px;
+    right: 10px;
+
+  }
    img{
      margin-top: 8px;
      margin-left: 5px;

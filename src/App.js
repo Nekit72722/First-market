@@ -35,6 +35,7 @@ function App() {
     const [items, setItems] = useState([]);
     const [cartItems, setCartItems] = useState([]);
     const [drawerVisible, setDrawerVisible] = useState(false);
+    const [searchValue, setSearchValue] = useState('')
 
     useEffect(()=>{
      fetch('https://62df9b5e976ae7460bef93b4.mockapi.io/Items').then(res =>{
@@ -49,6 +50,9 @@ function App() {
     const onAddToCart=(obj)=>{
         setCartItems(prev=>[...prev, obj]);
     }
+    const onChangeSearchInput = (e)=>{
+        setSearchValue(e.target.value)
+    }
 
           return(
               <div className='wrapper clear'>
@@ -57,17 +61,19 @@ function App() {
 
                   <div className='content p-40'>
                       <div className='d-flex align-center justify-between p-40 mb-40'>
-                          <h1>All Products</h1>
+                          <h1>{searchValue ? `Resultat wyszukiwania po: ${searchValue}` : 'Wszystkie produkty'}</h1>
                           <div className='search-block d-flex'>
                               <img width={18} height={18} src={search} alt=""/>
-                              <input placeholder='Search...' type="text"/>
+                              {searchValue && <img onClick={()=> setSearchValue('')} className='clear cu-p' src={remove} alt="Close"/>}
+                              <input onChange={onChangeSearchInput} value={searchValue} placeholder='Search...' type="text"/>
                           </div>
                       </div>
                       <div className='d-flex flex-wrap'>
                           {/*<Card title='cow1' price='123' imgUrl={cow1}/>*/}
                           {/*<Card title='cow2' price='150' imgUrl={cow2}/>*/}
-                          {items.map((item)=>(
+                          {items.filter((item)=>item.name.toLowerCase().includes(searchValue)).map((item, index)=>(
                               <Card
+                                  key={index}
                                   name={item.name}
                                   price={item.price}
                                   imgUrl={item.imgUrl}
