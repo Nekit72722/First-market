@@ -104,15 +104,18 @@ img{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   .cartHeader{
     display: flex;
     justify-content: space-between;
   }
 .cartContainer{
-  display: flex;
-  flex-direction: column;
+  //display: flex;
+  //flex-direction: column;
   //justify-content: flex-start;
   flex: 1;
+  overflow: auto;
+  margin-bottom: 40px;
 }
 
   h2{
@@ -165,19 +168,20 @@ img{
     top: -4px;
     margin: 0 7px;
   }
-  button{
-    width: 100%;
-    height: 55px;
-    background-color: #29e30e;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background 0.2s ease-in-out;
-    &:hover {
-      background-color: lighten(#24fd19, 5%);
-    }
-    &:active{
-      background-color: darken(#016501, 5%);
-    }
+
+}
+.greenButton{
+  width: 100%;
+  height: 55px;
+  background-color: #29e30e;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+  &:hover {
+    background-color: lighten(#24fd19, 5%);
+  }
+  &:active{
+    background-color: darken(#016501, 5%);
   }
 }
