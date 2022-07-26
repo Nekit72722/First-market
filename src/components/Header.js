@@ -10,7 +10,7 @@ import search from '../img/search.png'
 import remove from "../img/remove.png"
 import Card from "./Card";
 
-function Header(){
+function Header(props){
     // const [visible, setVisible] = useState('none')
     // const HandleOpener = () =>{
     //     return   setVisible('flex');
@@ -28,8 +28,8 @@ return(
             </div>
         </div>
         <ul className='d-flex'>
-            <li className='mr-30'>
-                <img style={{cursor: "pointer"}} width={18} height={18} src={basket} alt='basket'/>
+            <li onClick={props.onClickCart} className='mr-30 cu-p'>
+                <img width={18} height={18} src={basket} alt='basket'/>
                 <span>100 zl</span>
 
             </li>

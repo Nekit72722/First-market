@@ -2,13 +2,13 @@ import remove from "../img/remove.png";
 import cow1 from "../img/cow1.jpg";
 import React from "react";
 
-const Drawer = () =>{
+const Drawer = (props) =>{
     return (
-        <div style={{display: 'none'}} className='overlay'>
+        <div className='overlay'>
     <div className='drawer'>
         <div className='cartHeader'>
             <h2 className='mb-30'>Koszyk</h2>
-            <img style={{cursor: "pointer"}} width={20} height={20} src={remove} alt="remove"/>
+            <img onClick={props.onCloseCart} style={{cursor: "pointer"}} width={20} height={20} src={remove} alt="remove"/>
         </div>
         <div className='cartContainer'>
             <div className='cartItem d-flex align-center mb-20'>

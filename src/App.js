@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import './App.css';
 // import Header from "./components/Header";
 // import {useState} from "@types/react";
@@ -17,27 +17,31 @@ import Drawer from "./components/Drawer";
 
 const arr = [{
     name: 'Cow1',
-    price: 100
+    price: 100,
+    imgUrl: `${cow1}`
 },
     {
         name: 'Cow2',
-        price: 110
+        price: 110,
+        imgUrl: `${cow2}`
+    },
+    {
+        name: 'Cow3',
+        price: 100,
+        imgUrl: `${cow3}`
     }
 ];
 function App() {
-    // const [visible, setVisible] = useState('none')
-    //
+    const [drawerVisible, setDrawerVisible] = useState(false)
+
     // const HandleCloser = ()=>{
     //     return setVisible('none');
     // }
 
           return(
               <div className='wrapper clear'>
-
-                      <Drawer/>
-
-
-                       <Header/>
+                  {drawerVisible && <Drawer onCloseCart={()=> setDrawerVisible(false)}/>}
+                       <Header onClickCart={() => setDrawerVisible(true)}/>
 
                   <div className='content p-40'>
                       <div className='d-flex align-center justify-between p-40 mb-40'>
@@ -48,11 +52,17 @@ function App() {
                           </div>
                       </div>
                       <div className='d-flex'>
-                          <Card/>
-                          {/*{arr.map((obj)=>(*/}
-                          {/*    <Card/>*/}
-                          {/*    )*/}
-                          {/*)}*/}
+                          {/*<Card title='cow1' price='123' imgUrl={cow1}/>*/}
+                          {/*<Card title='cow2' price='150' imgUrl={cow2}/>*/}
+                          {arr.map((obj)=>(
+                              <Card
+                                  title={obj.name}
+                                  price={obj.price}
+                                  imgUrl={obj.imgUrl}
+                                  onPlus={()=> console.log('plus')}
+                              />
+                              )
+                          )}
 
 
                       </div>
