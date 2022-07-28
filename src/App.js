@@ -15,6 +15,8 @@ import plus from "./img/plus.png";
 import cow3 from "./img/cow3.jpg";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
+import { Route, Routes } from "react-router-dom";
+import AdminPanel from "./components/AdminPanel";
 
 // const arr = [{
 //     "name": "Cow1",
@@ -71,7 +73,9 @@ function App() {
               <div className='wrapper clear'>
                   {drawerVisible && <Drawer items={cartItems} onRemove={onRemoveFromCart} onCloseCart={()=> setDrawerVisible(false)}/>}
                        <Header onClickCart={() => setDrawerVisible(true)}/>
-
+                  <Routes>
+                      <Route  path="/adminpanel"  element={<AdminPanel />} />
+                  </Routes>
                   <div className='content p-40'>
                       <div className='d-flex align-center justify-between p-40 mb-40'>
                           <h1>{searchValue ? `Resultat wyszukiwania po: ${searchValue}` : 'Wszystkie produkty'}</h1>
