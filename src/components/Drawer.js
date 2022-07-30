@@ -17,7 +17,7 @@ const Drawer = ({onCloseCart,onRemove,totalPrice, items = []}) =>{
                                     <div style={{backgroundImage: `url(${obj.imgUrl})`}} className='cartItemImg'></div>
                                     <div className='mr-20'>
                                         <p className='mb-5'>{obj.name}</p>
-                                        <b>{obj.price}</b>
+                                        <b>{obj.price} zł</b>
                                     </div>
                                     <img className='removeBtn'
                                          onClick={()=> onRemove(obj.id)}

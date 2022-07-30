@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import plus from "../img/plus.png";
 
@@ -8,6 +8,7 @@ const Card = ({name, imgUrl, price, onPlus})=>{
     // const myTimeout = setTimeout(myGreeting, 5000);
 
     const [isAdded, setIsAdded] = useState(false);
+
     const onClickPlus = () =>{
         onPlus({name, imgUrl, price})
         setIsAdded(!isAdded);
@@ -15,6 +16,10 @@ const Card = ({name, imgUrl, price, onPlus})=>{
             window.location.reload();
 
         },200)
+        // useEffect(()=>{
+        //     window.location.reload();
+        //
+        // },[])
 
 
     }
@@ -26,7 +31,7 @@ const Card = ({name, imgUrl, price, onPlus})=>{
             <div className='d-flex justify-between align-center'>
                 <div className='d-flex flex-column '>
                     <span>Price:</span>
-                    <b className='opacity-5'>{price} zl</b>
+                    <b className='opacity-5'>{price} zł</b>
 
                 </div>
                 {/*<button className='button'>*/}

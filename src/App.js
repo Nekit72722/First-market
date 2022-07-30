@@ -14,7 +14,8 @@ function App() {
     const [items, setItems] = useState([]);
     const [cartItems, setCartItems] = useState([]);
     const [drawerVisible, setDrawerVisible] = useState(false);
-    const [searchValue, setSearchValue] = useState('')
+    const [searchValue, setSearchValue] = useState('');
+
 
     useEffect(()=>{
         // fetch('https://62df9b5e976ae7460bef93b4.mockapi.io/Items').then(res =>{
@@ -33,6 +34,7 @@ function App() {
     //     return setVisible('none');
     // }
     const onAddToCart=(obj)=>{
+
         axios.post('https://62df9b5e976ae7460bef93b4.mockapi.io/cart', obj)
         setCartItems(prev=>[...prev, obj]);
 
@@ -47,7 +49,12 @@ function App() {
         setSearchValue(e.target.value)
     }
     const totalPrice = cartItems.reduce((sum,obj)=>obj.price + sum,0);
+    // const onBlockScroll = ()=>{
+    //
+    // }
+
     return(
+
         <div className='wrapper clear'>
             {drawerVisible && <Drawer totalPrice={totalPrice} items={cartItems} onRemove={onRemoveFromCart} onCloseCart={()=> setDrawerVisible(false)}/>}
             <Header totalPrice={totalPrice} cartItem={cartItems} onClickCart={() => setDrawerVisible(true)}/>
@@ -85,6 +92,7 @@ function App() {
                 <AdminPanel/>
             </Route>
         </div>
+
 
     )
 }

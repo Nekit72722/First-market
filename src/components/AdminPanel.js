@@ -4,7 +4,6 @@ import axios from "axios";
 const AdminPanel =()=>{
     const [nameValue, setNameValue] = useState("");
     const [priceValue, setPriceValue] = useState();
-    // const [idValue, setIdValue] = useState("");
     const [imageValue, setImageValue] =useState("");
     const onChangeNameValue=(e)=>{
         setNameValue(e.target.value);
@@ -17,9 +16,12 @@ const AdminPanel =()=>{
     }
 
     const onAddToData =()=>{
+        // if(priceValue !== Number){
+        //
+        // }
         axios.post('https://62df9b5e976ae7460bef93b4.mockapi.io/Items', {
             name: nameValue,
-            price: priceValue,
+            price: Number(priceValue),
             imgUrl: imageValue
         })
             .then(function (response) {
@@ -28,20 +30,27 @@ const AdminPanel =()=>{
             .catch(function (error) {
                 console.log(error);
             });
+
+
+        setTimeout(()=>{
+            window.location.reload();
+
+        },200)
+
         // setNameValue('');
         // setImageValue('');
         // setPriceValue();
     }
     return (
-        <>
+        <div>
             <h1>Dodaj nowy Product</h1>
             <div className='admin-panel d-flex flex-column'>
-                <div onChange={onChangeNameValue}  placeholder='Imię'>Wpisz nazwę<input /></div>
-                <div onChange={onChangePriceValue} placeholder='cena'>Wpisz wartość<input type='number'/></div>
-                <div onChange={onChangeImageValue}  placeholder='zdjęcie'>Dodaj zdjęcie<input /></div>
+                <div onChange={onChangeNameValue}  >Wpisz nazwę<input placeholder='name' /></div>
+                <div onChange={onChangePriceValue} >Wpisz wartość<input placeholder='price' /></div>
+                <div onChange={onChangeImageValue}  >Dodaj zdjęcie<input placeholder='photo' /></div>
                 <button onClick={onAddToData}>Wyslij</button>
             </div>
-        </>
+        </div>
     )
 }
 

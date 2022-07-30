@@ -5,17 +5,22 @@ import basket from '../img/basket.png';
 import user from '../img/user.png';
 
 function Header(props){
+   const onRefresh=()=>{
+       setTimeout(()=>{
+           window.location.reload();
 
+       },100)
+   }
 
 
     return(
         <header className='d-flex justify-between align-center p-40'>
             <Link to='/'>
-                <div className='d-flex align-center'>
+                <div onClick={onRefresh} className='d-flex align-center'>
 
-                    <img width={50} height={40} src={logo} alt='logo'/>
+                    <img style={{backgroundColor: "rosybrown", borderRadius: '50px'}} width={50} height={40} src={logo} alt='logo'/>
                     <div>
-                        <h3 className='text-uppercase'>El prezento</h3>
+                        <h3 className='text-uppercase'>Testshop</h3>
                         <p>Best decision for present</p>
                     </div>
 
